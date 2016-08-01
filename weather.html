@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+<header> Weather Application</header>
+<nav id="input">
+
+    <form id="zipcode1">
+        Please enter the zipcode of a first city: <br>
+        <input type="text" title ='zip_one' id="city_one_input" value="Zipcode1"><br>
+        <input type="button" onclick="Set_value_one()" id='buttonOne' value='Submit'> <br>
+    </form>
+
+    <form id="zipcode2">
+        Please enter the zipcode of a second city: <br>
+        <input type="text" title = 'zip_two' id="city_two_input" value="Zipcode2"><br>
+        <input type="button" onclick="Set_value_two()" id='buttonTwo' value='Submit'>
+        <br><br>
+    </form>
+
+</nav>
+<div id="City_one">
+    <div id="forecast_one">
+        <table>
+            <tr>
+                <td> Summary: </td>
+                <td colspan = '6'> <p id="summary_today_1"></p> </td>
+            </tr>
+            <tr>
+                <td> Day </td>
+                <td> Icon and Description </td>
+                <td> High and Low Temp </td>
+                <td> Chance of Precip </td>
+                <td> Humidity </td>
+                <td> Wind </td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td>Day One</td>
+                <td> <p id="summary1"></p> </td>
+                <td> <p id="highandlow1"></p> </td>
+                <td> <p id="precip1"></p> </td>
+                <td> <p id="humidity1"></p> </td>
+                <td> <p id="wind1"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Two</td>
+                <td> <p id="summary2"></p> </td>
+                <td> <p id="highandlow2"></p> </td>
+                <td> <p id="precip2"></p> </td>
+                <td> <p id="humidity2"></p> </td>
+                <td> <p id="wind2"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Three</td>
+                <td> <p id="summary3"></p> </td>
+                <td> <p id="highandlow3"></p> </td>
+                <td> <p id="precip3"></p> </td>
+                <td> <p id="humidity3"></p> </td>
+                <td> <p id="wind3"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Four</td>
+                <td> <p id="summary4"></p> </td>
+                <td> <p id="highandlow4"></p> </td>
+                <td> <p id="precip4"></p> </td>
+                <td> <p id="humidity4"></p> </td>
+                <td> <p id="wind4"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Five</td>
+                <td> <p id="summary5"></p> </td>
+                <td> <p id="highandlow5"></p> </td>
+                <td> <p id="precip5"></p> </td>
+                <td> <p id="humidity5"></p> </td>
+                <td> <p id="wind5"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Six</td>
+                <td> <p id="summary6"></p> </td>
+                <td> <p id="highandlow6"></p> </td>
+                <td> <p id="precip6"></p> </td>
+                <td> <p id="humidity6"></p> </td>
+                <td> <p id="wind6"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Seven</td>
+                <td> <p id="summary7"></p> </td>
+                <td> <p id="highandlow7"></p> </td>
+                <td> <p id="precip7"></p> </td>
+                <td> <p id="humidity7"></p> </td>
+                <td> <p id="wind7"></p> </td>
+                  </tr>
+            <tr>
+                <td>Day Eight</td>
+                <td> <p id="summary8"></p> </td>
+                <td> <p id="highandlow8"></p> </td>
+                <td> <p id="precip8"></p> </td>
+                <td> <p id="humidity8"></p> </td>
+                <td> <p id="wind8"></p> </td>
+                  </tr>
+        </table>
+
+    </div>
+
+</div>
+
+<div id= 'temperature'></div>
+<div id= 'humidity'></div>
+
+
+<div id="City_two">
+    <div id="forecast_two">
+         <table>
+            <tr>
+                <td> Summary: </td>
+                <td colspan = '6'> <p id="summary_today_2"></p> </td>
+            </tr>
+            <tr>
+                <td> Day </td>
+                <td> Icon and Description </td>
+                <td> High and Low Temp </td>
+                <td> Chance of Precip </td>
+                <td> Humidity </td>
+                <td> Wind </td>
+            </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td>Day One</td>
+                <td> <p id="summary9"></p> </td>
+                <td> <p id="highandlow9"></p> </td>
+                <td> <p id="precip9"></p> </td>
+                <td> <p id="humidity9"></p> </td>
+                <td> <p id="wind9"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Two</td>
+                <td> <p id="summary10"></p> </td>
+                <td> <p id="highandlow10"></p> </td>
+                <td> <p id="precip10"></p> </td>
+                <td> <p id="humidity10"></p> </td>
+                <td> <p id="wind10"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Three</td>
+                <td> <p id="summary11"></p> </td>
+                <td> <p id="highandlow11"></p> </td>
+                <td> <p id="precip11"></p> </td>
+                <td> <p id="humidity11"></p> </td>
+                <td> <p id="wind11"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Four</td>
+                <td> <p id="summary12"></p> </td>
+                <td> <p id="highandlow12"></p> </td>
+                <td> <p id="precip12"></p> </td>
+                <td> <p id="humidity12"></p> </td>
+                <td> <p id="wind12"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Five</td>
+                <td> <p id="summary13"></p> </td>
+                <td> <p id="highandlow13"></p> </td>
+                <td> <p id="precip13"></p> </td>
+                <td> <p id="humidity13"></p> </td>
+                <td> <p id="wind13"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Six</td>
+                <td> <p id="summary14"></p> </td>
+                <td> <p id="highandlow14"></p> </td>
+                <td> <p id="precip14"></p> </td>
+                <td> <p id="humidity14"></p> </td>
+                <td> <p id="wind14"></p> </td>
+            </tr>
+            <tr>
+                <td>Day Seven</td>
+                <td> <p id="summary15"></p> </td>
+                <td> <p id="highandlow15"></p> </td>
+                <td> <p id="precip15"></p> </td>
+                <td> <p id="humidity15"></p> </td>
+                <td> <p id="wind15"></p> </td>
+                  </tr>
+            <tr>
+                <td>Day Eight</td>
+                <td> <p id="summary16"></p> </td>
+                <td> <p id="highandlow16"></p> </td>
+                <td> <p id="precip16"></p> </td>
+                <td> <p id="humidity16"></p> </td>
+                <td> <p id="wind16"></p> </td>
+                  </tr>
+        </table>
+
+    </div>
+</div>
+
+
+
+<div id = 'map1'> </div>
+<div id = 'map2'> </div>
+
+
+
+</body>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    #forecast_one {
+        float: left;
+        color: black;
+        text-align: center;
+    }
+    #forecast_two {
+        float: right;
+        color: black;
+        text-align: center;
+
+    }
+    header {
+        height: 75px;
+        text-align: center;
+    }
+    nav {
+        height:150px;
+    }
+    #zipcode1 {
+        width: 200px;
+        height: 150px;
+        float: left;
+        text-align: center;
+    }
+    #zipcode2 {
+        width: 200px;
+        height: 150px;
+        text-align: center;
+        float: right;
+    }
+    #map1 {
+        float: bottom;
+        height: 500px;
+        width: 400px;
+        background-color: #CCC;
+    }
+    #map2 {
+        float: bottom;
+        height: 500px;
+        width: 400px;
+        background-color: #CCC;
+    }
+    #temperature {
+        height: 200px;
+        width: 300px;
+    }
+
+</style>
+
+
+
+<script>
+
+        var firstCitySubmit = "No";
+        var secondCitySubmit = "No";
+        var cityName1 = '';
+        var cityName2 = '';
+        var citySaveOutput1 = {};
+        var lat = '';
+        var lng = '';
+        var citySaveOutput2 = {};
+        var markers = [];
+
+
+        function Set_value_one(){
+            document.getElementById('City_one').value = document.getElementById('city_one_input').value;
+            call_API_one();
+        }
+        function Set_value_two(){
+            document.getElementById('City_two').value = document.getElementById('city_two_input').value;
+            call_API_two();
+        }
+
+        function call_API_one() {
+            //Get zipcode and build url
+            var zipcode = document.getElementById('City_one').value;
+            //Call query Geocoding API
+            var BASE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+            var KEY = "AIzaSyCbAzyHqMHkMQJpHPt0lPJh2xyLdZ8bv5Q";
+            var URL1 = BASE_URL + zipcode + "&key=" + KEY;
+            document.getElementById('buttonOne').value = 'Thanks!';
+            weather_call(URL1);
+        }
+
+        function call_API_two() {
+            //Get zipcode and build url
+            var zip_code = "";
+            var place = "";
+            var zipcode = document.getElementById('City_two').value;
+
+            //Call query Geocoding API
+            var BASE_URL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+            var KEY = "AIzaSyCbAzyHqMHkMQJpHPt0lPJh2xyLdZ8bv5Q";
+            var URL2 = BASE_URL + zipcode + "&key=" + KEY;
+            document.getElementById('buttonTwo').value = 'Thanks!';
+            weather_call(URL2);
+
+        }
+
+
+        function weather_call(URL) {
+            //JQuery call to URL, stores lat and long of zipcode
+            $(document).ready(function () {
+
+                $.getJSON(URL, function (data) {
+
+                    console.log(data);
+
+                    var lat_long = data.results[0].geometry.location;
+
+                    lat = lat_long.lat;
+                    lng = lat_long.lng;
+
+                    if (firstCitySubmit == "No") {
+                        cityName1 = data.results[0].formatted_address;
+
+                        citySaveOutput1['lat'] = lat;
+                        citySaveOutput1['lng'] = lng;
+                        firstCitySubmit = "Yes";
+                    }
+                    else if (secondCitySubmit == "No") {
+                        cityName2 = data.results[0].formatted_address;
+
+                        citySaveOutput1['lat'] = lat;
+                        citySaveOutput1['lng'] = lng;  
+                        secondCitySubmit = "Yes";
+          
+                    }
+
+                    WeatherAPI(lat, lng);
+                    //Call weather API using lat and long
+
+                });
+
+            });
+        }
+
+
+        function WeatherAPI(latitude, longitude) {
+
+            $.getJSON("https://api.forecast.io/forecast/75435ddca253f7ded43d668ad7bc1f76/" + latitude
+                    + "," + longitude, function (rsp) {
+                console.log(rsp);
+                displayData(rsp);
+
+
+            });
+        }
+
+        function displayData(data){
+            //sorts data into corresponding table
+
+            if (document.getElementById('buttonOne').value == "Thanks!"){
+                document.getElementById('summary_today_1').innerHTML = data.currently.summary + ' and ' +data.currently.apparentTemperature +'&#8457';
+
+                for (var i = 0; i < 8; i++) {
+                    document.getElementById('summary' + (i +1)).innerHTML = data.daily.data[i].icon;
+
+
+                    var highandlow = data.daily.data[i].temperatureMin + '&#8457, ' + data.daily.data[i].temperatureMax +'&#8457';
+                    document.getElementById('highandlow' + (i +1)).innerHTML = highandlow;
+                    document.getElementById('precip' + (i +1)).innerHTML = 100*data.daily.data[i].precipProbability + "%";
+                    document.getElementById('humidity' + (i + 1)).innerHTML = (100*data.daily.data[i].humidity) + '%';
+                    if (data.daily.data[i].windBearing / 8 < 45-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph N";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 90-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph NE";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 135-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph E";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 180-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph SE";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 225-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph S";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 270-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph SW";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 315-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph W";
+                    }
+                    else if (data.daily.data[i].windBearing / 8 < 360-22.5) {
+                    document.getElementById('wind' + (i + 1)).innerHTML = data.daily.data[i].windSpeed + "mph NW";
+                    }
+                }
+
+                citySaveOutput1 = data.currently;
+                var lat1 = data.latitude;
+                var lng1 = data.longitude;
+                document.getElementById('buttonOne').value = "Submit";
+                firstCitySubmit = "Yes";
+                var firstCity = [];
+                firstCity[0] = lat1;
+                firstCity[1] = lng1;
+                // Create a marker and set its position.
+                      // Create a map object and specify the DOM element for display.
+                initMap(firstCity, "map1");
+
+
+            } 
+            else 
+                {
+                document.getElementById('summary_today_2').innerHTML = data.currently.summary + ' and ' + data.currently.apparentTemperature +'&#8457';
+
+                    for (var i = 0; i < 8; i++) {
+                        document.getElementById('summary' + (i + 9)).innerHTML = data.daily.data[i].icon;
+                        var highandlow = data.daily.data[i].temperatureMin + '&#8457, ' + data.daily.data[i].temperatureMax + '&#8457';
+                        document.getElementById('highandlow' + (i +9)).innerHTML = highandlow;
+                        document.getElementById('precip' + (i +9)).innerHTML = 100*data.daily.data[i].precipProbability + "%";
+                        document.getElementById('humidity' + (i + 9)).innerHTML = (100*data.daily.data[i].humidity) + '%';
+                        if (data.daily.data[i].windBearing / 8 < 45-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph N";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 90-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph NE";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 135-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph E";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 180-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph SE";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 225-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph S";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 270-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph SW";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 315-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph W";
+                        }
+                        else if (data.daily.data[i].windBearing / 8 < 360-22.5) {
+                        document.getElementById('wind' + (i + 9)).innerHTML = data.daily.data[i].windSpeed + " mph NW";
+                        }
+                    }
+                    citySaveOutput2 = data.currently;
+                    var lat2 = data.latitude;
+                    var lng2 = data.longitude;
+                    document.getElementById('buttonTwo').value = "Submit";
+                    secondCitySubmit = "Yes";
+                    var secondCity = [];
+                    secondCity[0] = lat2;
+                    secondCity[1] = lng2;
+                      // Create a map object and specify the DOM element for display.
+                    initMap(secondCity, "map2");
+
+
+            }
+
+        differences();
+        }
+
+        function differences(){
+           determineTemp(citySaveOutput1.temperature, citySaveOutput2.temperature);
+           determineHumidity(citySaveOutput1.humidity, citySaveOutput2.humidity);
+        }
+
+        function determineTemp(temp1, temp2){
+            if (temp1 >= temp2) {
+                var diff1 = temp1 - temp2;
+                var total1 = "It is " + diff1 + " degrees Farenheit warmer in " + cityName1 + " than in " + cityName2 + ".";
+                document.getElementById('temperature').innerHTML = total1; 
+            }
+            else {
+                var diff2 = temp2 - temp1;
+                var total2 = "It is " + diff2 + " degrees Farenheit warmer in " + cityName2 + " than in " + cityName1 + ".";
+                document.getElementById('temperature').innerHTML = total2;
+            }
+        }
+
+        function determineHumidity(humid1, humid2){
+            if (humid1 >= humid2) {
+                var diff1 = humid1 - humid2;
+                var total1 = "It is " + diff1 + " degrees Farenheit warmer in " + cityName1 + " than in " + cityName2 + ".";
+                document.getElementById('humidity').innerHTML = total1; 
+            }
+            else {
+                var diff2 = humid2 - humid1;
+                var total2 = "It is a factor of " + diff2 + " percent more humid in " + cityName2 + " than in " + cityName1 + ".";
+                document.getElementById('humidity').innerHTML = total2;
+            }
+
+        }
+
+
+
+</script>
+
+
+<script>
+       
+        function initMap(city, map1or2) {
+
+            if (map1or2 == "map1"){
+                // Create a map object and specify the DOM element for display.
+                var map = new google.maps.Map(document.getElementById('map1'), {
+                center: {lat: city[0], lng: city[1]},
+                scrollwheel: false,
+                zoom: 8
+                });
+                var marker = new google.maps.Marker({
+                map: map,
+                position: {lat: city[0], lng: city[1]},
+                });
+            } 
+            else if (map1or2 == "map2"){
+                // Create a map object and specify the DOM element for display.
+                var map = new google.maps.Map(document.getElementById('map2'), {
+                center: {lat: city[0], lng: city[1]},
+                scrollwheel: false,
+                zoom: 8
+                });
+                var marker = new google.maps.Marker({
+                map: map,
+                position: {lat: city[0], lng: city[1]},
+                });
+            }
+
+        } 
+
+
+</script> 
+<script asynch defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8m2XvPdFVzTfAMW9F4U95Bj25o9B350A&callback=initMap"
+    type="text/javascript">
+</script>
+</html>
+
